@@ -19,7 +19,10 @@
     
     <ul>
         {% for item in items %}
-        <form action="/{{item.item}}/remove" method="POST"><li>{{item.item}} x {{item.quantity}}: {{item.total}}</li><input type="submit"  name="remove" value="Remove"/></form>
+        <li>{{item.item}} x {{item.quantity}}: {{item.total}}</li>
+        <form action="/{{item.item}}/remove" method="POST"><input type="submit"  name="remove" value="Remove"/></form>
+        <form action="/{{item.item}}/change_quantity" method="POST"><input type="submit"  name="change_quantity" value="Change Quantity"/></form>
+        <form action="/{{item.item}}/change_price" method="POST"><input type="submit"  name="change_price" value="Change Price"/></form>
         {% endfor %}
     </ul>
     
