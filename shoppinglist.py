@@ -61,9 +61,7 @@ def change_price(item):
     for i in items:
         if i['item'] == item:
             i['price'] = new_price
-            # print(i)
             i['total'] = round(float(i['quantity']) * i['price'], 2)
-            # print(i)
     return redirect("/")
 
 
