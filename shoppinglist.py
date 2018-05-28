@@ -24,7 +24,6 @@ def add_item():
         'total': round(quantity_float * price, 2)
     }
     items.append(item)
-    print(items)
     return redirect("/")
     
 @app.route("/<item>/remove", methods=["POST","GET"])
@@ -34,34 +33,26 @@ def remove_item(item):
             items.remove(i)
     return redirect("/")
     
-@app.route("/<item>/change_quantity", methods=["POST", "GET"])
-def quantity(item):
+@app.route("/<item>/change", methods=["POST", "GET"])
+def change(item):
     item = item
-    return render_template("change.html", item=item)
-    
-@app.route("/<item>/change_quantity/new_quantity", methods=["POST", "GET"])
-def change_quantity(item):
-    new_quantity = request.form["new_quantity"]
-    new_quantity_float = float(new_quantity)
     for i in items:
         if i['item'] == item:
-            i['quantity'] = new_quantity
-            i['total'] = round(new_quantity_float * i['price'], 2)
-            print(i)
-    return redirect("/")
-
-@app.route("/<item>/change_price", methods=["POST", "GET"])
-def price(item):
-    item = item
+            item = i
     return render_template("change.html", item=item)
     
-@app.route("/<item>/change_price/new_price", methods=["POST", "GET"])
-def change_price(item):
+@app.route("/<item>/change/new", methods=["POST", "GET"])
+def change_quantity(item):
+    print(item)
+    new_quantity = request.form["new_quantity"]
+    new_quantity_float = float(new_quantity)
     new_price = float(request.form["new_price"])
     for i in items:
         if i['item'] == item:
+            i['quantity'] = new_quantity
             i['price'] = new_price
-            i['total'] = round(float(i['quantity']) * i['price'], 2)
+            i['total'] = round(new_quantity_float * i['price'], 2)
+            print(i)
     return redirect("/")
 
 

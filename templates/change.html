@@ -7,17 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Change Quantity</h1>
-    <form action="/{{item}}/change_quantity/new_quantity" method="POST">
-        <label for="new_quantity">Enter a new quantity of {{item}}</label>
-        <input type="number" min="1" name="new_quantity" placeholder="Enter new quantity" required/>
-        <input type="submit" value="Change Quantity"/>
+    <h1>Change Quantity and Price</h1>
+    <form action="/{{item.item}}/change/new" method="POST">
+        <label for="new_quantity">Enter a new quantity of {{item['item']}}</label>
+        <input type="number" min="1" name="new_quantity" value="{{item.quantity}}" required/>
+        <label for="new_price">Enter a new price for {{item['item']}}</label>
+        <input type="number" min="0.01" step="0.01" name="new_price" value="{{item.price}}" required/>
+        <input type="submit" value="Change Quantity and Price"/>
     </form>
     
-    <form action="/{{item}}/change_price/new_price" method="POST">
-        <label for="new_price">Enter a new price for {{item}}</label>
-        <input type="number" min="0.01" step="0.01" name="new_price" placeholder="Enter new price" required/>
-        <input type="submit" value="Change Price"/>
-    </form>
 </body>
 </html>
