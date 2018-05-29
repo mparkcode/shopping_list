@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Change Quantity and Price</h1>
-    <form action="/{{item.item}}/change/new" method="POST">
+    <form action="/{{username}}/{{item.item}}/change/new" method="POST">
         <label for="new_quantity">Enter a new quantity of {{item['item']}}</label>
         <input type="number" min="1" name="new_quantity" value="{{item.quantity}}" required/>
         <label for="new_price">Enter a new price for {{item['item']}}</label>
